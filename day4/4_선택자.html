@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            color: blue;
+        }
+        div,span{ /* div, span 둘 다 적용 */
+            font-size: 25px;
+        }
+        div span{ /* div 모든 하위요소 span태그에 적용 */
+            font-weight: bold;
+        }
+        div > span{ /* div 바로 밑에있는 자식요소 span태그에 적용 */
+                    /* 손자뻘 태그 (div->p->span)에는 적용 안됨.*/
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>html 재밌다.</span>
+        <p>
+            <span>js도 재밌나?</span>
+        </p>
+    </div>
+</body>
+</html>
