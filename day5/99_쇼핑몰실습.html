@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #container{
+            width: 100%;
+        }
+        #layout{
+            position: relative;
+            width: 1880px;
+            padding: 5px 15px 18px 15px;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 2px 2px #eee;
+            font-weight: bold;
+            font-size: x-large;
+        }
+        .contents1{
+            position: relative;
+            width: 400px;
+            height: 600px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            box-sizing: border-box;
+            box-shadow: 1px 1px #ccc;;
+            margin: 20px;
+            float: left;
+        }
+        /* .contents2{
+            position: relative;
+            width: 400px;
+            height: 600px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            box-sizing: border-box;
+            box-shadow: 1px 1px #ccc;;
+            margin: 20px;
+            float: left;
+        }
+        .contents3{
+            position: relative;
+            width: 400px;
+            height: 600px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            box-sizing: border-box;
+            box-shadow: 1px 1px #ccc;;
+            margin: 20px;
+            float: left;
+        } */
+        img{
+            position: absolute;
+            border: 1px solid #ccc;
+            border-radius: 15%;
+            box-shadow: 1px 1px gray;
+            width: 230px;
+            height: 230px;
+            margin-top: 50px;
+            margin-left: 80px;
+        }
+
+        .subject{
+            float: right;
+        }
+        span{
+            border: 5px solid #eee;
+            background-color: #eee;
+            color: #a0a0a0;
+            margin-right: 10px;
+            margin-top: 3px;
+            border-radius: 5px;
+            font-weight: normal;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 15px;
+        }
+        span:hover{
+            background-color: white;
+        }
+        .card-titel{
+            font-size: 18px;
+            margin-top: 0;
+         }
+       .card-container{
+        padding: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+       }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="layout">좋은쇼핑몰
+        <div class="subject"><span>찜목록</span><span>장바구니</span><span>로그아웃</span></div>
+    </div>
+    <div class="card-container">
+    <div class="contents1">
+        <img src="../media/레서판다.jpg" alt="레서판다">  
+        <h2 class="card-titel">상품 A</h2> 
+    </div>  
+    <div class="contents1">
+        <img src="../media/사자.jpg" alt="사자">
+    </div>
+    <div class="contents1">
+        <img src="../media/카피바라.jpg" alt="카피바라">
+    </div>
+   </div>
+</div>
+
+    
+</body>
+</html>
