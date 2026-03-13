@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <label>아이디 : <input type="text" id="userId"></label>
+        </div>
+        <div>
+            <label>비밀번호 : <input type="password" id="pwd1"></label>
+        </div>
+        <div>
+            <label>비밀번호 확인 : <input type="password" id="pwd2"></label>
+        </div>
+        <div>
+            <button onclick="fnJoin()">회원가입</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function fnJoin(){
+        let userId = document.querySelector("#userId").value; // input 박스안의 값을 가져오는 것이 value
+        if(userId.length < 6){
+            alert("아이디는 6글자 이상 입력하세요.");
+            return;
+        }
+        // 1.문자열이 소문자 + 숫자인지 검사
+       const regex = /^[a-z0-9]+$/;
+    //    console.log(regex.test(userId));
+        console.log(regex.test(userId));
+       if(!regex.test(userId)){
+            alert("아이디는 소문자 + 숫자")
+            return;
+       }
+       // 1.패스워드는 8글자 이상
+        let password = document.querySelector("#pwd1").value;
+        let passwordConfirm = document.querySelector("#pwd2").value;    
+        if(password.length < 8){
+            alert("비밀번호는 8글자 이상 입력하세요");
+            return;
+        }
+        // 2. '패스워드', '패스워드 확인' 두 개는 같은 값
+        if(!(password == passwordConfirm)){
+            alert("패스워드를 다시 확인해주세요.")
+            return;
+        } 
+        // 3.패스워드에는 특수문자 필수
+        //  영문(대소문자) + 숫자 + 특수문자가 각 1회 이상 입력되어 있고 10자리 이상 나는 이렇게함.
+            const regex2 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+~`\-={}[\]:;"'<>,.?/\\]).{10,}$/;
+            console.log(regex2.test(password));
+        if(!(regex2.test(password))){
+            alert("패스워드에는 대문자, 특수문자를 포함해 10글자 이상 넣어주세요")
+            return;
+        }else{
+            alert("가입성공");
+        }
+        // alert("가입성공";)
+    }
+    
+    
+</script>

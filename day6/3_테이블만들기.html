@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, th, td{
+            border: 1px solid black;
+            padding: 5px 10px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div id="contents">
+zz
+    </div>
+    <button onclick="fnCreateTable()">테이블 만들기</button>
+</body>
+</html>
+<script>
+    function fnCreateTable(){
+        // let table = document.createElement("table"); // <table></table>
+        // let row = document.createElement("tr"); // <tr></tr>
+        // let column1 = document.createElement("td"); // <td></td>
+        // column1.innerHTML ="1";
+        // row.appendChild(column1); // <tr><td>1</td></tr>
+        // for(let i=1;i<=5; i++){
+        //     let column1 = document.createElement("td"); // <td></td>
+        //     column.innerHTML =i;
+        //     row.appendChild(column); // <tr><td>1</td></tr>
+        // }
+        // table.appendChild(row);
+
+        let table = document.createElement("table");
+        for(let j=1;j<=5;j++){
+            let row = document.createElement("tr");
+             for(let i=1;i<=5; i++){
+                let column = document.createElement("td"); // <td></td>
+                column.innerHTML =i;
+                row.appendChild(column); // <tr><td>1</td></tr>
+                }
+            table.appendChild(row);
+        }
+
+        let contents = document.querySelector("#contents"); 
+        contents.appendChild(table);
+    }
+</script>
