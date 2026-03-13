@@ -6,11 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="container">
+        <ul id="stu-list">
+
+        </ul>
+    </div>
 </body>
 </html>
 <script>
-     let list = [
+    // json 리스트 안에 맵이 있는 형태
+    // STUDENT 테이블에 데이터를 요청하면 아래처럼 넘겨준다.
+
+    // 서버에서 데이터를 리턴 받았다는 가정하에 JSON 다뤄보기
+    let list = [
         {
             "STU_NO": "20153075",
             "STU_NAME": "옥한빛",
@@ -46,5 +54,14 @@
             "STU_NAME": "김인중",
             "STU_DEPT": "컴퓨터정보"
         }
-    ]
+        ]
+        let stuList = document.querySelector("#stu-list");
+
+        for(let i=0; i<list.length;i++){
+            console.log(list[i].STU_NAME);
+            let li = document.createElement("li"); /* <li></li>*/
+            li.innerHTML = list[i].STU_NO + " " + list[i].STU_NAME;
+            stuList.appendChild(li);
+        }
+
 </script>
