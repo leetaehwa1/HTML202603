@@ -1,3 +1,4 @@
+<<<<<<< HEAD
       div{
             color: green;
         }
@@ -13,4 +14,21 @@
         .core{
             text-decoration: underline;
         }
+=======
+      div{
+            color: green;
+        }
+        #title{
+            font-weight: bold;
+            font-size: 30px;
+            color: blue;
+        }
+        .subject{
+            font-style: italic;
+
+        }
+        .core{
+            text-decoration: underline;
+        }
+>>>>>>> e9470e8e88033ac1d7759942481db75d9bf5013b
    
