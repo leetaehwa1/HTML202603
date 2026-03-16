@@ -1,114 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
-    <style>
-        #container{
-            width: 500px;
-            height: 600px;
-            margin: 50px auto;
-            border: 2px solid white;
-            border-left: 1px solid whitesmoke;
-            border-top: 1px solid whitesmoke;
-            box-shadow: 2px 2px gray;
-            border-radius: 20px;
-            color: black;
-            text-align: center;
-        }
-        h1{
-            margin-top: 50px;
-        }
-        h3{
-            font-weight: lighter;
-            font-size: medium;
-        }
-        .user{
-            text-align: left;
-            margin-top: 20px;
-            margin-left: 40px;
-            font-weight: bold;
-        }
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>로그인</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <style>
+            #container{
+                background-color: maroon;
+                width: 500px;
+                height: 600px;
+                margin: 50px auto;
+                border: 2px solid white;
+                border-left: 1px solid whitesmoke;
+                border-top: 1px solid whitesmoke;
+                box-shadow: 2px 2px gray;
+                border-radius: 20px;
+                color: black;
+                text-align: center;
+            }
+            h1{
+                margin-top: 50px;
+                color: linen;
+            }
+            h3{
+                font-weight: lighter;
+                font-size: medium;
+                color: linen;
+            }
+            .user{
+                color: aliceblue;
+                text-align: left;
+                margin-top: 20px;
+                margin-left: 40px;
+                font-weight: bold;
+            }
 
-        .box1{
-            margin-left: 35px;
-            margin-right: 35px;
-            border: 2px solid #eee;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 15px;
-            width: 400px;
-            height: 20px;
-        }
-        button{
-            width: 400px;
-            height: 50px;
-            margin-top: 50px;
-            background-color: cornflowerblue;
-            border-radius: 15px;
-            text-align: center;
-            font-size: large;
-            font-weight: bold;
-            color: whitesmoke;
-        }
-        button:hover{
-            background-color: #ddd;
-            cursor: pointer;
-        }
-        .find{
-            margin-top: 30px;
-            color: #ccc;
-            cursor: pointer;
-        }
-        .join{
-            margin-top: 30px;
-            color: #ccc;
-            cursor: pointer;
-        }
-        cursor:hover{
-            color: black;
-        }
-        .link{
-            margin-top: 30px;
-        }
-        .bottom-link{
-            text-align: center;
-            margin-top: 20px;
-        }
+            .box1{
+                margin-left: 35px;
+                margin-right: 35px;
+                border: 2px solid #eee;
+                padding: 10px;
+                margin-top: 5px;
+                border-radius: 15px;
+                width: 400px;
+                height: 20px;
+            }
+            button{
+                width: 400px;
+                height: 50px;
+                margin-top: 50px;
+                background-color: rgb(3, 15, 37);
+                border-radius: 15px;
+                text-align: center;
+                font-size: large;
+                font-weight: bold;
+                color: whitesmoke;
+            }
+            button:hover{
+                background-color: #ddd;
+                cursor: pointer;
+            }
+            .find{
+                margin-top: 30px;
+                color: #ccc;
+                cursor: pointer;
+            }
+            .join{
+                margin-top: 30px;
+                color: #ccc;
+                cursor: pointer;
+            }
+            cursor:hover{
+                color: black;
+            }
+            .link{
+                margin-top: 30px;
+            }
+            .bottom-link{
+                text-align: center;
+                margin-top: 20px;
+            }
 
-        .bottom-link a{
-            text-decoration: none;
-            color: #888;
-            padding: 0 10px;
-        }
+            .bottom-link a{
+                text-decoration: none;
+                color: #888;
+                padding: 0 10px;
+            }
 
-        .bottom-link a:first-child{
-            border-right: 1px solid #ccc;
-        }
-        a:hover{
-            color: black;
-        }
-    </style>
-    
-</head>
-<body>
-    <div id="container">
-        <h1>환영합니다.</h1>
-        <h3>서비스 이용을 위해 로그인 해주세요.</h3>
-        <div class="user">아이디</div>
-            <input class="box1" type="text" placeholder="아이디를 입력해주세요.">
-
-        <div class="user">비밀번호</div>
-            <input class="box1" type="password" placeholder="비밀번호를 입력해주세요.">
+            .bottom-link a:first-child{
+                border-right: 1px solid #ccc;
+            }
+            a:hover{
+                color: black;
+            }
+        </style>
         
-       <a href="#"><button>로그인</button></a>
-       <div class="bottom-link">
-            <a href="#">비밀번호 찾기</a>
-            <a href="#">회원가입</a>
-        </div>  
-       
+    </head>
+    <body>
+        <div id="app">
+        <div id="container">
+            <h1>환영합니다.</h1>
+            <h3>서비스 이용을 위해 로그인 해주세요.</h3>
+            <div class="user">아이디</div>
+                <input class="box1" type="text" v-model="userId" placeholder="아이디를 입력해주세요.">
+
+            <div class="user">비밀번호</div>
+                <input class="box1" type="password" v-model="pwd" placeholder="비밀번호를 입력해주세요.">
+            
+        <button @click="fnLogin">로그인</button>
+        <div class="bottom-link">
+                <a href="#">비밀번호 찾기</a>
+                <a href="99_join.html">회원가입</a>
+            </div>  
+        </div>
+        </div>
         
-       
-</body>
-</html>
+            
+        
+    </body>
+    </html>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    // 변수 - (key : value)
+                    userId :"",
+                    pwd :""
+                };
+            },
+            methods: {
+                // 함수(메소드) - (key : function())
+                fnLogin: function () {
+                    console.log("로그인 클릭됨.")
+                    let self = this;
+                    // let param = {
+                    //     userId : self.userId,
+                    //     pwd : self.pwd
+                    // };
+
+                    $.ajax({
+                        url: "http://192.168.30.57:3009/login",
+                        dataType: "json",
+                        type: "GET",
+                        // data : param,
+                        data: {userId : self.userId, pwd : self.pwd},
+                        success: function (data) {
+                            console.log(data);
+                            alert(data.message);
+                            if(data.success){
+                                location.href="Main.html";
+                            }
+                        }
+                    });
+                }
+            }, // methods
+            mounted() {
+                // 처음 시작할 때 실행되는 부분
+            }
+        });
+
+        app.mount('#app');
+    </script>
