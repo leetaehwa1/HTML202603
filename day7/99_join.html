@@ -47,6 +47,15 @@
                 width: 510px;
                 height: 20px;
             }
+            .box2{
+                margin-right: 35px;
+                border: 1px solid #eee;
+                padding: 10px;
+                margin-top: 5px;
+                border-radius: 15px;
+                width: 550px;
+                height: 20px;
+            }
             button{
                 width: 500px;
                 height: 50px;
@@ -58,10 +67,7 @@
                 font-weight: bold;
                 color: whitesmoke;
             }
-            button:hover{
-                background-color: #ddd;
-                cursor: pointer;
-            }
+            
             .login{
                 margin-top: 30px;
                 color: #ccc;
@@ -83,7 +89,7 @@
             }
 
             .check-btn{
-                width:110px;
+                width:120px;
                 height:42px;
                 margin-top:5px;
             }
@@ -99,7 +105,7 @@
 
             <div class="user">아이디</div>
                 <div class="id-row">
-                    <input class="box1"
+                    <input class="box2"
                         type="text"
                         v-model="userId"
                         :disabled="idChecked"

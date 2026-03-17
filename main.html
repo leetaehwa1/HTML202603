@@ -23,11 +23,11 @@
 
     .header {
       background-color: #ff6b6b;
-      color: white;
+      color: white; 
     }
     .image{
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
     }
     .side {
       background-color: #4ecdc4;
@@ -102,10 +102,9 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <div class="box header">헤더 영역~~
-          <img src="" alt="">
+        <div class="box header">
+          <img class="image" src="ChatGPT Image 2026년 3월 17일 오전 11_02_48.png" alt="로고">
         </div>
-        
         <div class="box side">사이드영역~~</div>
         <div class="box content">
             <div class="widget">
@@ -130,3 +129,31 @@
     </div>
 </body>
 </html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnUserList: function () {
+                $.ajax({
+                    url: "",
+                    dataType: "json",
+                    type: "GET",
+                    data: {},
+                    success: function (data) {
+
+                    }
+                });
+            }
+        }, // methods
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+        }
+    });
+
+    app.mount('#app');
+</script>
