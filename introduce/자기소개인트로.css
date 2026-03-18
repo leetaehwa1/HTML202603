@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: sans-serif;
+  background: linear-gradient(to right, #000, #222);
+}
+
+#container {
+  height: 100vh;
+    animation: fadeIn 1.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* 세로 가운데 */
+  align-items: center;       /* 가로 가운데 */
+
+  text-align: center;
+}
+
+.title {
+    font-family: 'orbitron', sans-serif;
+  animation: fadeIn 1s ease;
+  font-size: 70px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 6px;
+}
+
+.subtitle {
+    animation: fadeIn 1s ease;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  font-size: 20px;
+  color: #aaa;
+}
+
+.desc {
+    animation: fadeIn 1s ease;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+button {
+  animation: fadeIn 1s ease;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+
+  padding: 12px 40px;
+  font-size: 16px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: white;
+  color: black;
+  transform: scale(1.1);
+}
+button:active {
+  transform: scale(0.95);  /* 눌리는 느낌 */
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

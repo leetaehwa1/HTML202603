@@ -168,7 +168,10 @@
                         console.log(data);
                         alert(data.message);
                         if(data.success){
-                            location.href = "main.html";
+                            localStorage.setItem("sessionId",data.userInfo.USERID);
+                            localStorage.setItem("sessionName",data.userInfo.USERNAME);
+                            localStorage.setItem("sessionGender",data.userInfo.GENDER);
+                            location.href = "강사님쇼핑몰.html";
                         }
                         
                     }

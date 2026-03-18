@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰</title>
+    <style>
+        
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    .box {
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px #eee;
+      font-weight: bold;
+      font-size: 20px;
+    }
+   /* 검색 영역 */
+      .search-area {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      /* 검색 전체 박스 */
+      .search-wrapper {
+        display: flex;
+        align-items: center;
+        background: white;
+        border-radius: 30px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        overflow: hidden;
+      }
+
+      /* 입력창 */
+      .search-box {
+        width: 400px;
+        height: 45px;
+        border: none;
+        outline: none;
+        padding: 0 15px;
+        font-size: 16px;
+      }
+
+      /* 검색 버튼 */
+      .search-btn {
+        height: 45px;
+        padding: 0 20px;
+        border: none;
+        background-color:cornflowerblue;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      /* 버튼 hover 효과 */
+      .search-btn:hover {
+        background-color: #45b7d1;  
+      }
+
+      /* 입력창 클릭 시 효과 */
+      .search-wrapper:focus-within {
+        box-shadow: 0 0 0 3px rgba(255,107,107,0.3);
+      }
+    .header {
+      background-color: #ff6b6b;
+      color: white; 
+      display: flex;
+      align-items: center;  
+    }
+    .image{
+      width: 100px;
+      height: 100px;
+      border-radius: 15px;
+      box-shadow: 2px 2px #333;
+    }
+    img{
+      width: 100px;
+      height: 100px;
+      margin-top: 10px;
+      border-radius: 15px;
+      box-shadow: 2px 2px #333;
+    }
+    .side {
+      background-color: white;
+      color: black;
+    }
+    .content {
+      background-color: #ccc;
+      box-shadow: none;
+      padding: 20px;
+    }
+    .widget {
+      height: 300px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px #eee;
+      justify-content: center;
+     
+      }
+      .widget:hover{
+        background-color: blanchedalmond;
+      }
+    .footer {
+      background-color: #45b7d1;
+      color: white;
+    }
+
+    .dashboard-container {
+      display: grid;
+      gap: 20px;
+
+      
+      grid-template-columns: 250px 1fr; /* 사이드 공간을 위해 2개로 나눔. 250px과 나머지*/
+      grid-template-rows: 200px minmax(500px, auto) 200px; /* 헤더, 메인, 푸터 3개 영역 */
+
+      grid-template-areas:
+        "header header"
+        "side content" /* 왼쪽은 사이드바, 오른쪽은 콘텐츠 */
+        "footer footer";
+    }
+
+    .header { grid-area: header; }
+    .side { grid-area: side; }
+    .content { grid-area: content; }
+    .footer { grid-area: footer; }
+
+    .content {
+      display: grid;
+      gap: 20px; 
+
+       /* auto-fit 으로 공간이 남으면 알아서 칸을 채우고 아니면 여러 줄로*/
+       /* 최소 200px을 유지하고, 자리가 남으면 1비율(1fr)로 똑같이 늘어남  */
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+      grid-auto-rows: 150px; /* 길이 맞춤 */
+    }
+
+    /* 화면 작아졌을 때 */
+    @media (max-width: 768px) {
+      .dashboard-container {
+       
+        grid-template-columns: 1fr; /*  1열로 세로 배치 */
+        grid-template-rows: 150px 150px 1fr 150px; /* 헤더 사이드 컨텐츠 푸터 순서대로 크기 */
+
+        /* 1줄로 */
+        grid-template-areas:
+          "header"
+          "side"
+          "content"
+          "footer";
+      }
+    }
+    .word {
+      margin-top : 25px;
+    }
+    .price{
+      color: rgb(236, 44, 44);
+      font-weight: bold;
+    }
+
+    .empty {
+      width: 120px;
+    }
+    a{
+      text-decoration:none ;
+      color: #333;
+    }
+    a:hover{
+      scale: 1.05;
+    }
+    .category-box{
+      color: #828080;
+      padding: 5px 5px;
+      border: 7px solid white;
+      border-radius: 10px ;
+      margin: 10px auto;
+      font-weight: normal;
+      font-size: medium;
+    }
+    .category-box:hover{
+      background-color: turquoise;
+      color: white;
+      font-weight: bold;
+      scale: 1.05;
+      cursor: pointer;
+    }
+    .list{
+      font-size: medium;
+      font-weight: bold;
+    }
+    .price-range{
+      font-size: medium;
+      font-weight: lighter;
+    }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="box header">
+            <div class="logo">
+              <img class="image" src="쇼핑몰로고.png" alt="로고">
+            </div>
+            <div class="search-area">
+              <div class="search-wrapper">
+                <input type="text" class="search-box" placeholder="🔍 검색어를 입력하세요.">
+                <button class="search-btn">검색</button>
+              </div>
+            </div>
+          </div>
+      
+        <div class="box side">
+        <div class="list">카테고리</div>
+        <div class="category-box">전체상품</div>
+        <div class="category-box">스마트폰</div>
+        <div class="category-box">게임기</div>
+        <div class="category-box">노트북</div>
+        <div class="category-box">기타</div>
+        <hr>
+        <div class="list">가격대</div>
+        <div class="price-range">
+        <label><input type="checkbox" name="price">1만원 이하</label>
+        </div>
+        <div class="price-range">
+        <label><input type="checkbox" name="price">1만원 ~ 3만원</label>
+        </div>
+        <div class="price-range">
+        <label><input type="checkbox" name="price">3만원 ~ 5만원</label>
+        </div>
+        <div class="price-range">
+        <label><input type="checkbox" name="price">5만원 이상</label>
+        </div>
+       
+        
+        </div>
+        <div class="box content">
+            <a href="#"><div class="widget">
+              <div><img src="/media/유튜브.jpg" alt=""></div>
+              <div class="word">유튜브 프리미엄</div>
+              <div class="price">15,900원</div>
+            </div></a>
+           <a href="#"> <div class="widget">
+              <div><img src="/media/깃허브.jpg" alt=""></div>
+                <div class="word">깃허브</div>
+                <div class="price">39,000원</div>
+            </div></a>
+            <a href="#"><div class="widget">
+                <div>
+                  <img src="/media/인스타.jpg" alt="">
+                </div>
+                <div class="word">
+                  인스타 구독권</div>
+                  <div class="price">28,500원</div>
+            </div></a>
+             <a href="#"><div class="widget">
+                <div> <img src="/media/티라노.jfif" alt=""></div>
+                <div class="word">티라노 사우르스 그림</div>
+                <div class="price">45,000원</div>
+            </div></a>
+
+           <a href="#"><div class="widget">
+                <div><img src="/media/카피바라.jpg" alt=""></div>
+              <div class="word">카피바라 분양</div>
+              <div class="price">19,000원</div>
+            </div></a>
+          </div> 
+        <div class="box footer">하단 영역~~</div>
+      </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)
+                productList: []
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnUserList: function () {
+                $.ajax({
+                    url: "http://192.168.30.57:3009/product/list",
+                    dataType: "json",
+                    type: "GET",
+                    data: {},
+                    success: function (data) {
+
+                    }
+                });
+            }
+        }, // methods
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+        }
+    });
+
+    app.mount('#app');
+</script>
