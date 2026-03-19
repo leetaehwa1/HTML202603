@@ -144,7 +144,8 @@
               },
             fnMyPage : function(){
               let self = this;
-              let userId = self.sessionId;
+
+              location.href = "mypage.html?userId=" + localStorage.getItem("sessionId");
             } ,
 
               fnLogout : function(){

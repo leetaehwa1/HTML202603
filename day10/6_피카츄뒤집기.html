@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #e2ecf6;
+        }
+        #container{
+            width: 800px;
+            margin: 100px auto;
+        }
+        .border-box {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #ccc;
+            perspective: 800px;
+        }
+        .box-parent{
+            position: relative;;
+            width: 100%;
+            height: 100%;
+            background-color: #424040;
+            /* animation: rotateParent 3s linear infinite; */
+            /* transform-style: flat; 디폴트 평면상태  */
+            transform-style: preserve-3d;
+            transition: 1.5s;
+        }
+        .border-box:hover .box-parent {
+            transform: rotateY(180deg);
+        }
+        .box-front, .box-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .box-front img,
+        .box-back img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box-back {
+            transform: rotateY(180deg);
+        }
+        
+        @keyframes rotateParent{
+            0%{transform: rotateY(0deg);}
+            100%{ transform: rotateY(360deg);}
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="border-box">
+            <div class="box-parent">    
+            <div class="box-back">
+                <img src="../poket1.png">
+            </div>
+            <div class="box-front">
+                <img src="../poket2.png">
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

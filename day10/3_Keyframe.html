@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #e2ecf6;
+        }
+        #container{
+            width: 800px;
+            margin: 100px auto;
+        }
+        .box{
+            text-align: center;
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            color: white;
+            text-align: center;
+            line-height: 150px;
+            margin: 50px;
+        }
+        @keyframes slideIn { /* 단순한 시작과 끝 */
+            0%{ /*시작*/
+                transform: translateX(-100px);/* 왼쪽 100px만큼 이동해 있기*/
+                opacity: 0;
+            }
+            100%{ /* 끝 */
+                transform: translateX(0); /* 제자리로 */
+                opacity: 1;
+            }
+        }
+        @keyframes popIn {
+            0%{
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            60%{
+                 transform: scale(1.2);
+            }
+            100%{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+         @keyframes pulse {
+            0%{
+                transform: scale(1);
+            }
+            50%{
+                 transform: scale(1.1);
+                 background-color: aqua;
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+
+        @keyframes spin {
+            0%{
+                transform: translateX(-100px)rotate(0deg);
+            }
+            25%{
+                 transform: translateX(100px)rotate(180deg);
+            }
+            100%{
+                transform: translateX(-100px)rotate(360deg);
+            }
+        }
+        @keyframes move {
+            0%{
+                transform: translateX(0);
+            }
+            25%{
+                 transform: translateX(100px);
+            }
+            50%{
+                transform: translateX(100px) translateY(100px);
+            }
+            75%{
+                transform: translateX(0) translateY(100px);
+            }
+            100%{
+                transform: translate(0,0);
+            }
+        }
+        .animate1{
+            animation: slideIn 1s ease-out ;
+        }
+        .animate2{
+            animation: popIn 1s ease-in-out;
+        }
+        .animate3{
+            animation: pulse 2s linear infinite;
+        }
+        .animate4{
+            animation: spin 5s ease-in-out infinite;
+        }
+        .animate5{
+            animation: move 5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="box animate5">spin</div>
+    </div>
+</body>
+</html>
