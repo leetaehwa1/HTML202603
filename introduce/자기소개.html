@@ -6,17 +6,25 @@
     <title>자기소개 페이지</title>
     <link href="자기소개style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pretendard&family=Orbitron:wght@600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
     <div id="app">
-        <p>{{message}}</p>
+        <div v-if="isVisible" class="vue-popup">
+        <div class="popup-content">
+            <h1>{{greeting}}</h1>
+            <p>⭐경력 : {{career}} </p>
+            <button @click="closePopup">닫기</button>
+         </div>
+         </div>
     </div>
     <div id="container">
+        
         <div id="sidebar1">
             <div id="namecard">
                 <div class="box1"></div>
-                <h1>Lee TaeHwa</h1>
+                <h1 class="highlight">Lee TaeHwa</h1>
                 <div class="small red" >caption : </div>
                 <p class="small">Growing Programer.</p>
             </div>
@@ -42,11 +50,7 @@
                     <img src="유튜브.jpg" class="snsicon" alt="유튜브">   
                 </a>
             </div>
-            <div id="download-area" style="text-align: center; margin-top: 20px;">
-                <a href="이력서파일경로.pdf" download class="btn-download">
-                    📄 Resume Download
-                </a>
-            </div>
+            
         </div>
 
         <div id="sidebar2">
@@ -123,14 +127,14 @@
         </div>
 
         <div id="sidebar3"> 
-                <h2 class="subtitle2">Skills</h2>
-<div class="skills-badges">
-    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="html">
-    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css">
-    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="js">
-    <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white" alt="vue">
-    <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="oracle">
-</div>
+            <h2 class="subtitle2">Skills</h2>
+                <div class="skills-badges">
+                    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="html">
+                    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css">
+                    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="js">
+                    <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white" alt="vue">
+                    <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="oracle">
+                </div>
 
              <h2 class="subtitle2">자격증</h2>
              <ul class="ul1">
@@ -157,8 +161,14 @@
                 <li>GitHub</li>
                 <li>Figma</li>
                 </ul>
+                <div id="download-area" style="text-align: center; margin-top: 20px;">
+                <a href="javascript:;" class="btn-download">
+                    📄 이력서 다운로드
+                </a>
+            </div>
         </div>
     </div>
+    
     
 
     <div id="projectModal" class="modal">
@@ -198,14 +208,25 @@
         alert("라이트모드로 전환되었습니다.");
     }
     }
+    const {createApp} = Vue;
 
-    new Vue({
-        el: "#app",
-        data: {
-            message: "Vue 적용 완료!"
-        }
-    });
-
+     const app = createApp({
+            data(){
+                return{
+                    greeting : "방문해주셔서 감사합니다.",
+                    career : "웹 개발 프로젝트 2회 수행",
+                    isVisible : true
+                }
+            },
+            methods: {
+                closePopup(){
+                    console.log("버튼 클릭");
+                    this.isVisible = false;
+                }
+            }
+        });
+        app.mount('#app')
+        
         window.onload = function() {
         // 전체 화면 fade-in
         document.body.classList.add("fade-in");
@@ -266,22 +287,22 @@
     }
 
     const observerOptions = {
-  threshold: 0.1 // 요소가 10% 정도 보일 때 실행
-};
+        threshold: 0.1 // 요소가 10% 정도 보일 때 실행
+        };
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-    }
-  });
-}, observerOptions);
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            }
+        });
+        }, observerOptions);
 
-// 감시할 요소들 지정 (섹션, 테이블 등)
-document.querySelectorAll('#section, table, .subtitle2').forEach(el => {
-  el.classList.add('reveal');
-  observer.observe(el);
-});
+        // 감시할 요소들 지정 (섹션, 테이블 등)
+        document.querySelectorAll('#section, table, .subtitle2').forEach(el => {
+        el.classList.add('reveal');
+        observer.observe(el);
+        });
 
 
 
